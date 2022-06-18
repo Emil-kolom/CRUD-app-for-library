@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Udemy-Spring-Project2:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d769a8b6-cfc2-4e09-b886-cae28f5248de" name="Changes" comment="create entity">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/udemy/services/BooksService.java" afterDir="false" />
+    <list default="true" id="d769a8b6-cfc2-4e09-b886-cae28f5248de" name="Changes" comment="config BooksService and BooksController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/configs/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/configs/DatabaseConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/controllers/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/controllers/BooksController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/controllers/PeopleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/controllers/PeopleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/models/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/models/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/services/PeopleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/services/PeopleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/util/PersonValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/util/PersonValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/sql/startQuery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/sql/startQuery.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/new.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/new.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/show.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +57,18 @@
       </map>
     </option>
   </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="true" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2Ajv6wiSAL8jzKNpwQ8XFnpFJbO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -180,7 +200,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1655535638081</updated>
-      <workItem from="1655535639634" duration="12824000" />
+      <workItem from="1655535639634" duration="14919000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1655540161053</created>
@@ -196,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655542556534</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="config BooksService and BooksController">
+      <created>1655548729671</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655548729671</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +243,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit" />
     <MESSAGE value="create entity" />
-    <option name="LAST_COMMIT_MESSAGE" value="create entity" />
+    <MESSAGE value="config BooksService and BooksController" />
+    <option name="LAST_COMMIT_MESSAGE" value="config BooksService and BooksController" />
   </component>
 </project>

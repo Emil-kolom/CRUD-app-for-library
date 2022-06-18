@@ -5,29 +5,29 @@
     <title>Страница книги</title>
 </head>
 <body>
-    <p th:text="${book.name()} + ', ' + ${book.author()} + ', ' + ${book.year()}"> Name, Author, year</p>
-    <div th:if="${book.personId()}">
-        <p th:text="'Книга сейчас у: ' + ${peopleFullName} "></p>
-        <form th:method="PATCH" th:action="@{/books/{id}/release(id=${book.id()})}">
+    <p th:text="${book.getTitle()} + ', ' + ${book.getAuthor()} + ', ' + ${book.getYear()}"> Name, Author, year</p>
+    <div th:if="${book.getOwner()}">
+        <p th:text="'Книга сейчас у: ' + ${book.getOwner().getFullName()} "></p>
+        <form th:method="PATCH" th:action="@{/books/{id}/release(id=${book.getId()})}">
             <input type="submit" value="Освободить книгу!">
         </form>
     </div>
-    <div th:unless="${book.personId()}">
+    <div th:unless="${book.getOwner()}">
         <p>Эта книга свободна. Кому назначить ее?</p>
         <p>Выберите человека
             <select form="selectPersonForm" name="person_id">
-            <option th:each="person : ${people}" th:value="${person.id()}" th:text="${person.fullName()}"> </option>
+            <option th:each="person : ${people}" th:value="${person.getId()}" th:text="${person.getFullName()}"> </option>
             </select>
         </p>
-        <form id="selectPersonForm" th:action="@{/books/{id}/assign(id=${book.id()})}" th:method="PATCH">
+        <form id="selectPersonForm" th:action="@{/books/{id}/assign(id=${book.getId()})}" th:method="PATCH">
             <input type="submit" value="Назначить книгу!">
         </form>
     </div>
     <hr/>
-    <form th:method="GET" th:action="@{/books/{id}/edit(id=${book.id()})}">
+    <form th:method="GET" th:action="@{/books/{id}/edit(id=${book.getId()})}">
         <input type="submit" value="Редактировать">
     </form>
-    <form th:method="DELETE" th:action="@{/books/{id}(id=${book.id()})}">
+    <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
         <input type="submit" value="Удалить">
     </form>
 </body>

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -63,6 +64,10 @@ public class Person {
         }
 
         public List<Book> getBookList() {
+                if(this.bookList == null){
+                        this.bookList = new ArrayList<>();
+                }
+
                 return bookList;
         }
 

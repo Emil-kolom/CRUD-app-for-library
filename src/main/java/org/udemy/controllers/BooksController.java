@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.udemy.models.Book;
 import org.udemy.services.BooksService;
+import org.udemy.services.PeopleService;
 
 import javax.validation.Valid;
 
@@ -15,10 +16,12 @@ import javax.validation.Valid;
 public class BooksController {
 
     private final BooksService booksService;
+    private final PeopleService peopleService;
 
     @Autowired
-    public BooksController(BooksService booksService){
+    public BooksController(BooksService booksService, PeopleService peopleService){
         this.booksService = booksService;
+        this.peopleService = peopleService;
     }
 
     @GetMapping()
@@ -32,6 +35,9 @@ public class BooksController {
                        Model model){
         Book book = booksService.getById(id);
         model.addAttribute("book", book);
+        if(book.getOwner() == null){
+            model.addAttribute("people", peopleService.list());
+        }
         return "books/show";
     }
 

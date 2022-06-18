@@ -21,7 +21,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories
+@EnableJpaRepositories("org.udemy.repositories")
 @PropertySource("classpath:db-config.properties")
 public class DatabaseConfig {
     private final Environment env;
@@ -50,7 +50,7 @@ public class DatabaseConfig {
         em.setDataSource(psqlDataSource());
         em.setPackagesToScan("org.udemy.models");
 
-        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaProperties(additionalProperties());
 
@@ -67,7 +67,7 @@ public class DatabaseConfig {
 
     Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect", env.getProperty("hibernate."));
+        properties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
 
         return properties;
     }
