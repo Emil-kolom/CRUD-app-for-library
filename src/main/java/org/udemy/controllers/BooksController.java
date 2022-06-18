@@ -5,9 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.udemy.dao.BookDAO;
-import org.udemy.dao.PersonDAO;
 import org.udemy.models.Book;
+import org.udemy.services.BooksService;
 
 import javax.validation.Valid;
 
@@ -15,33 +14,24 @@ import javax.validation.Valid;
 @RequestMapping("/books")
 public class BooksController {
 
-    private final BookDAO bookDAO;
-    private final PersonDAO personDAO;
+    private final BooksService booksService;
 
     @Autowired
-    public BooksController(BookDAO bookDAO, PersonDAO personDAO) {
-        this.bookDAO = bookDAO;
-        this.personDAO = personDAO;
+    public BooksController(BooksService booksService){
+        this.booksService = booksService;
     }
 
     @GetMapping()
     public String printIndexPage(Model model){
-        model.addAttribute("books", bookDAO.list());
+        model.addAttribute("books", booksService.list());
         return "books/index";
     }
 
     @GetMapping("/{id}")
     public String printPersonalPage(@PathVariable("id") int id,
                        Model model){
-        Book book = bookDAO.getById(id);
+        Book book = booksService.getById(id);
         model.addAttribute("book", book);
-        if(book.personId() == null){
-            model.addAttribute("people", personDAO.list());
-        }
-        else{
-            model.addAttribute("peopleFullName",
-                    personDAO.getById(book.personId()).fullName());
-        }
         return "books/show";
     }
 
@@ -52,7 +42,7 @@ public class BooksController {
 
     @GetMapping("/{id}/edit")
     public String printEditPage(Model model, @PathVariable("id") int id){
-        model.addAttribute("book", bookDAO.getById(id));
+        model.addAttribute("book", booksService.getById(id));
         return "books/edit";
     }
 
@@ -62,7 +52,7 @@ public class BooksController {
         if(bindingResult.hasErrors()){
             return "books/new";
         }
-        bookDAO.save(book);
+        booksService.save(book);
         return "redirect:/books";
     }
 
@@ -73,26 +63,26 @@ public class BooksController {
         if(bindingResult.hasErrors()){
             return "books/edit";
         }
-        bookDAO.update(id, book);
+        booksService.update(id, book);
         return "redirect:/books";
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") int id){
-        bookDAO.deleteById(id);
+        booksService.deleteById(id);
         return "redirect:/books";
     }
 
     @PatchMapping("/{id}/release")
     public String releaseBook(@PathVariable("id") int id){
-        bookDAO.releaseBookById(id);
+        booksService.releaseBookById(id);
         return "redirect:/books/";
     }
 
     @PatchMapping("/{id}/assign")
     public String releaseBook(@PathVariable("id") Integer id,
                               @RequestParam("person_id") int person_id){
-        bookDAO.assignBookById(id, person_id);
+        booksService.assignBookById(id, person_id);
         return "redirect:/books/";
     }
 }

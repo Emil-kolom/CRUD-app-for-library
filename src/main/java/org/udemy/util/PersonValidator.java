@@ -5,18 +5,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.udemy.models.Person;
-import org.udemy.repositories.PeopleRepository;
+import org.udemy.services.PeopleService;
 
 import java.util.Optional;
 
 @Component
 public class PersonValidator implements Validator {
 
-    private final PeopleRepository peopleRepository;
+    private final PeopleService peopleService;
 
     @Autowired
-    public PersonValidator(PeopleRepository peopleRepository) {
-        this.peopleRepository = peopleRepository;
+    public PersonValidator(PeopleService peopleService ) {
+        this.peopleService = peopleService;
     }
 
 
@@ -28,8 +28,9 @@ public class PersonValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Person person = (Person) target;
-        Optional<Person> checkedPerson = peopleRepository.findByFullName(person.getFullName());
+        Optional<Person> checkedPerson = peopleService.findByFullName(person);
         if(checkedPerson.isPresent()) {
+            // if it's not the same person
             if (!checkedPerson.get().getId().equals(person.getId())) {
                 errors.rejectValue("fullName", "1", "Это фио используется сейчас");
             }

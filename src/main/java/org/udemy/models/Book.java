@@ -4,6 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Negative;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
 
@@ -31,6 +34,13 @@ public class Book {
         @ManyToOne
         @JoinColumn(name = "person_id", referencedColumnName = "id")
         private Person owner;
+
+        @Temporal(value = TemporalType.DATE)
+        @Column(name = "taken_at")
+        private Date takenAt;
+
+        @Transient
+        private boolean isOverdue;
 
         public Book() {
         }
@@ -79,6 +89,23 @@ public class Book {
 
         public void setOwner(Person owner) {
                 this.owner = owner;
+        }
+
+        public Date getTakenAt() {
+                return takenAt;
+        }
+
+        public void setTakenAt(Date takenAt) {
+                this.takenAt = takenAt;
+        }
+
+        public boolean isOverdue() {
+                LocalDate localTakenAt = takenAt.toInstant()
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate();
+                Period period = Period.between(LocalDate.now(), localTakenAt);
+
+                return period.getDays() > 10;
         }
 
         @Override

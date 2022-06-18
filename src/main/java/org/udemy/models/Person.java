@@ -24,11 +24,6 @@ public class Person {
         @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
         private Integer yearBirth;
 
-        @Temporal(value = TemporalType.DATE)
-        @Column(name = "created_at")
-        private Date createdAt;
-
-
         @OneToMany(
                 cascade = CascadeType.ALL,
                 mappedBy = "owner"
@@ -65,14 +60,6 @@ public class Person {
 
         public void setYearBirth(Integer yearBirth) {
                 this.yearBirth = yearBirth;
-        }
-
-        public Date getCreatedAt() {
-                return createdAt;
-        }
-
-        public void setCreatedAt(Date createdAt) {
-                this.createdAt = createdAt;
         }
 
         public List<Book> getBookList() {
