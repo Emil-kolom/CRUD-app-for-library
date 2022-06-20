@@ -1,9 +1,9 @@
 package org.udemy.services;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.udemy.models.Book;
 import org.udemy.models.Person;
 import org.udemy.repositories.PeopleRepository;
 
@@ -32,7 +32,9 @@ public class PeopleService {
 
     @Transactional(readOnly = true)
     public Person findById(Integer id){
-        return peopleRepository.findById(id).orElse(null);
+        Person person = peopleRepository.findById(id).orElse(new Person());
+        Hibernate.initialize(person.getBookList());
+        return person;
     }
 
     public void save(Person person){

@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Личная страница человека</title>
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
     <p th:text="${person.getFullName()} + ', ' +${person.getYearBirth()}">FIO, year</p>
-    <div th:if="${person.getBookList()}">
+    <div th:if="${person.getBookList().isEmpty()}">
         <p>Человек пока не взял ни одной книги</p>
     </div>
-    <div th:unless="${person.getBookList()}">
+    <div th:if="${!person.getBookList().isEmpty()}" th:each="book : ${person.bookList}">
         <span><strong>Книги:</strong></span>
-        <p th:each="book : ${person.getBookList()}"
+        <p th:class="${book.isOverdue()} ? 'overdue' : ''"
            th:text="${book.getTitle()} + ', '+ ${book.getAuthor()} + ', ' + ${book.getYear()}"></p>
     </div>
     <hr>

@@ -1,13 +1,15 @@
 package org.udemy.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.udemy.models.Book;
 import org.udemy.models.Person;
 import org.udemy.repositories.BooksRepository;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,8 +69,24 @@ public class BooksService {
                     Person person = peopleService.findById(id);
                     if(person != null) {
                         book.setOwner(person);
-                        book.setTakenAt(new Date());
+                        book.setTakenAt(LocalDate.now());
                     }
                 });
+    }
+
+    @Transactional(readOnly = true)
+    public List<Book> getPaginPage(Integer page, Integer bookPerPage) {
+        if(page < 1 || bookPerPage < 1)
+            return list();
+        //to count from 1 and not from 0
+        page -=1;
+        return booksRepository.findAll(PageRequest.of(page,bookPerPage)).getContent();
+    }
+
+    @Transactional(readOnly = true)
+    public void sortByYear(List<Book> bookList) {
+        bookList.sort(Comparator.comparing(
+                Book::getYear,
+                Comparator.reverseOrder()));
     }
 }

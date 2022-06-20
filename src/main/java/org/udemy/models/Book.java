@@ -1,7 +1,6 @@
 package org.udemy.models;
 
 import javax.persistence.*;
-import javax.validation.constraints.Negative;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -35,9 +34,8 @@ public class Book {
         @JoinColumn(name = "person_id", referencedColumnName = "id")
         private Person owner;
 
-        @Temporal(value = TemporalType.DATE)
         @Column(name = "taken_at")
-        private Date takenAt;
+        private LocalDate takenAt;
 
         @Transient
         private boolean isOverdue;
@@ -91,21 +89,20 @@ public class Book {
                 this.owner = owner;
         }
 
-        public Date getTakenAt() {
+        public LocalDate getTakenAt() {
                 return takenAt;
         }
 
-        public void setTakenAt(Date takenAt) {
+        public void setTakenAt(LocalDate takenAt) {
                 this.takenAt = takenAt;
         }
 
         public boolean isOverdue() {
-                LocalDate localTakenAt = takenAt.toInstant()
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate();
-                Period period = Period.between(LocalDate.now(), localTakenAt);
+                if(takenAt != null) {
+                        Period period = Period.between(LocalDate.now(), takenAt);
 
-                return period.getDays() > 10;
+                        return period.getDays() > 10;
+                } else return false;
         }
 
         @Override

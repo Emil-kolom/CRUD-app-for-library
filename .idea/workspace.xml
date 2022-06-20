@@ -9,20 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d769a8b6-cfc2-4e09-b886-cae28f5248de" name="Changes" comment="config BooksService and BooksController">
+    <list default="true" id="d769a8b6-cfc2-4e09-b886-cae28f5248de" name="Changes" comment="config views in project1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/udemy/controllers/RootController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/configs/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/configs/DatabaseConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/configs/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/configs/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/controllers/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/controllers/BooksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/controllers/PeopleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/controllers/PeopleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/models/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/models/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/services/BooksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/services/BooksService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/udemy/services/PeopleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udemy/services/PeopleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/new.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/new.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/show.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +32,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="HTML File" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -78,15 +78,19 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/home/emil/IdeaProjects/Udemy-Spring-Project2/src/main/resources",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "spring.configuration.checksum": "9c6a222de8cc35424f36635da4a5c1a2"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -99,8 +103,11 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static/styles" />
+      <recent name="$PROJECT_DIR$/src/main/webapp" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/style" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static/style" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people" />
     </key>
   </component>
   <component name="RunManager">
@@ -200,7 +207,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1655535638081</updated>
-      <workItem from="1655535639634" duration="14919000" />
+      <workItem from="1655535639634" duration="15100000" />
+      <workItem from="1655631435592" duration="8095000" />
+      <workItem from="1655717736711" duration="12270000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1655540161053</created>
@@ -223,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655548729671</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="config views in project1">
+      <created>1655550946071</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655550946071</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,9 +257,13 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/Udemy-Spring-Project1" />
+    </ignored-roots>
     <MESSAGE value="init commit" />
     <MESSAGE value="create entity" />
     <MESSAGE value="config BooksService and BooksController" />
-    <option name="LAST_COMMIT_MESSAGE" value="config BooksService and BooksController" />
+    <MESSAGE value="config views in project1" />
+    <option name="LAST_COMMIT_MESSAGE" value="config views in project1" />
   </component>
 </project>

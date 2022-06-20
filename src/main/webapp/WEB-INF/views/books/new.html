@@ -8,7 +8,6 @@
 <body>
     <form th:action="@{/books}" th:method="POST" th:object="${book}">
         <label for="name-input">Введите название книги:</label>
-        <!-- th:field=*{name} + th:object=${book} = ${book.name()}-->
         <input type="text" id="name-input" th:field="*{title}">
         <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Name error</div>
         <br>

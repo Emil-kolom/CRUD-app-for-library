@@ -10,6 +10,7 @@ import org.udemy.services.BooksService;
 import org.udemy.services.PeopleService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/books")
@@ -25,8 +26,20 @@ public class BooksController {
     }
 
     @GetMapping()
-    public String printIndexPage(Model model){
-        model.addAttribute("books", booksService.list());
+    public String printIndexPage(Model model,
+                                 @RequestParam(name = "page", required = false) Integer page,
+                                 @RequestParam(name = "bookPerPage", required = false) Integer bookPerPage,
+                                 @RequestParam(name = "sort_by_year",required = false)boolean isSortedByYear){
+        List<Book> bookList;
+        if(page != null && bookPerPage != null){
+            bookList = booksService.getPaginPage(page, bookPerPage);
+        } else {
+            bookList = booksService.list();
+        }
+        if(isSortedByYear){
+            booksService.sortByYear(bookList);
+        }
+        model.addAttribute("books",bookList);
         return "books/index";
     }
 
