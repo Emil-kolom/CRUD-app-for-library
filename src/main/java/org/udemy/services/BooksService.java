@@ -2,6 +2,7 @@ package org.udemy.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.udemy.models.Book;
@@ -11,6 +12,7 @@ import org.udemy.repositories.BooksRepository;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -28,6 +30,15 @@ public class BooksService {
     @Transactional(readOnly = true)
     public List<Book> list(){
         return booksRepository.findAll();
+    }
+
+
+    @Transactional(readOnly = true)
+    public List<Book> list(String searchText){
+        if(Objects.nonNull(searchText)){
+            return booksRepository.findAllByTitleLike(searchText);
+        }
+        return list();
     }
 
     @Transactional(readOnly = true)
@@ -74,12 +85,17 @@ public class BooksService {
                 });
     }
 
+
     @Transactional(readOnly = true)
-    public List<Book> getPaginPage(Integer page, Integer bookPerPage) {
-        if(page < 1 || bookPerPage < 1)
-            return list();
+    public List<Book> getPaginPage(Integer page, Integer bookPerPage, String searchText) {
+        if(page < 1 || bookPerPage < 1) {
+            return list(searchText);
+        }
         //to count from 1 and not from 0
         page -=1;
+        if(Objects.nonNull(searchText)){
+            return booksRepository.findAllByTitleLike(searchText, PageRequest.of(page,bookPerPage)).getContent();
+        }
         return booksRepository.findAll(PageRequest.of(page,bookPerPage)).getContent();
     }
 

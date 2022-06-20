@@ -29,12 +29,13 @@ public class BooksController {
     public String printIndexPage(Model model,
                                  @RequestParam(name = "page", required = false) Integer page,
                                  @RequestParam(name = "bookPerPage", required = false) Integer bookPerPage,
-                                 @RequestParam(name = "sort_by_year",required = false)boolean isSortedByYear){
+                                 @RequestParam(name = "sort_by_year",required = false)boolean isSortedByYear,
+                                 @RequestParam(name = "search", required = false) String searchText){
         List<Book> bookList;
         if(page != null && bookPerPage != null){
-            bookList = booksService.getPaginPage(page, bookPerPage);
+            bookList = booksService.getPaginPage(page, bookPerPage,searchText);
         } else {
-            bookList = booksService.list();
+            bookList = booksService.list(searchText);
         }
         if(isSortedByYear){
             booksService.sortByYear(bookList);
@@ -103,5 +104,10 @@ public class BooksController {
                               @RequestParam("person_id") int person_id){
         booksService.assignBookById(id, person_id);
         return "redirect:/books/";
+    }
+
+    @GetMapping("/search")
+    public String search(){
+        return "books/search";
     }
 }
